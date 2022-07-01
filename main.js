@@ -38,16 +38,17 @@ const fillCharacters = (characters) => {
         element.setAttribute("href", `${character.wikiUrl}`);
         element.setAttribute("target", "_blank");
         element.classList.add("character-container")
+        const gender = character.gender.toLowerCase();
 
         element.innerHTML = `
             <img class="character-img" src="${character.image}" alt="${character.name}">
-            <h2 class="character-name"><b>Name:</b> ${character.name || "unknown"}</h2>
-            <hr>
-            <p class="character-gender"><b>Gender:</b> ${character.gender || "unknown"}</p>
-            <p class="character-hair"><b>Hair:</b> ${character.hairColor || "unknown"}</p>
+            <h2 class="character-name">
+                <div class="gender" style='background-image: url("../images/${gender}.svg");'></div>
+                ${character.name || "unknown"}
+            </h2>
+
             <p class="character-occupation"><b>Occupation:</b> ${character.occupation || "unknown"}</p>
             `
-
         charactersContainer.appendChild(element);
     })
 }

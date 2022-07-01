@@ -1,16 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Raleway:wght@300;400;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     scroll-behavior: smooth;
+    scroll-padding: 100%;
+    overscroll-behavior: none;
     text-decoration: none;
 }
 
 :root {
-    --color-primary: #FFC000;
+    --color-primary: #ff9d00;
     --primary-hover: #3C5A7F;
-    --color-secondary: #fed28b;
-    --background-color: linear-gradient(to top,rgb(246, 171, 101), rgb(223, 146, 78), rgb(214, 182, 135), rgb(192, 218, 193), rgb(145, 253, 253));
+    --color-secondary: #fff;
+    --background-color: linear-gradient(to top,rgb(246, 171, 101), rgb(223, 146, 78), rgb(214, 182, 135), rgb(192, 218, 193), rgb(145, 253, 253)) 50%;
 }
 
 body {
@@ -33,6 +37,7 @@ body {
     top: 0;
     border-radius: 0 0 20px 20px;
     z-index: 100;
+    box-shadow: 0 0 20px #000000bd;
 }
 
 .logo {
@@ -75,7 +80,7 @@ body {
 }
 
 .nav-link:hover > a {
-    color: #fff;
+    filter: brightness(.8);
 }
 
 .main {
@@ -120,21 +125,28 @@ body {
 
 .character-container {
     width: 300px;
-    background-color: var(--primary-hover);
+    background-color: var(--color-primary);
     border-radius: 10px;
     margin-bottom: 20px;
-    padding: 1rem;
+    padding: 3rem 1rem 1rem 1rem;
     transition: .4s ease-in-out;
-    box-shadow:  10px 10px 20px #0000006d;
+    box-shadow:  10px 10px 20px #1111116d, 2px 2px 10px 2px rgba(255,255,255,1) inset;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
-.character-container:hover {
-    transform: scale(1.1);
-    box-shadow:  10px 10px 20px #0000003d;
+.character-container:hover, .character-container:hover > * {
+    box-shadow:  10px 10px 20px #1111113d, 2px 2px 10px 2px rgba(255,255,255,.8) inset;
 }
 
-.character-container *:not(hr) {
+.character-container * {
     color: var(--color-secondary);
+}
+
+.character-container *:not(.character-name) {
+    font-family: "Raleway", "sans-serif";
 }
 
 .character-container b {
@@ -146,20 +158,58 @@ body {
     width: 100%;
     max-height: 250px;
     object-fit: scale-down;
-    border-radius: 10px;
-    border: 5px solid var(--color-secondary);
+    border-radius: 5px;
+    border: 1px solid #000;
     margin-bottom: 20px;
 }
 
 .character-name {
-    font-size: 1.5rem;
-    font-weight: normal;
-    margin-bottom: 10px;
+    display: grid;
+    place-items: center;
+    letter-spacing: 2px;
+    min-width: 92%;
+    height: 50px;
+    font-size: 1.2rem;
+    font-family: "Bangers", "cursive";
+    position: absolute;
+    top: 8px;
+    align-self: center;
+    background: var(--color-primary);
+    border: 1px solid #111;
+    padding: 5px 10px;
+    border-radius: 10px;
+    box-shadow:  0px 5px 5px #1111116d, 0px 3px 10px 2px rgba(255,255,255,1) inset;
 }
 
-.character-name ~ * {
+.character-name .gender {
+    content: "";
+    width: 12%;
+    aspect-ratio: 1;
+    background-color: #fff;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: -5px;
+    right: -8px;
+    border: 1px solid #555;
+    border-radius: 50%;
+}
+
+.character-occupation b {
+    font-weight: bolder;
+    font-size: 1.5rem;
+}
+
+.character-occupation {
     font-size: 1rem;
-    margin-bottom: 10px;
+    color: #eee;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 5px;
+    border: 1px solid #111;
+    padding: 5px 5px;
+    box-shadow:  0px 5px 5px #1111116d, 0px 3px 10px 2px rgba(255,255,255,1) inset;
 }
 
 .main-buttons {
@@ -168,32 +218,31 @@ body {
     justify-content: space-evenly;
 }
 
-.main-buttons > button {
+.main-buttons > a {
    font-size: 1.2rem;
    text-transform: uppercase;
    color: var(--color-primary);
    padding: 10px 25px;
-   background-color: cornflowerblue;
+   background-color: var(--primary-hover);
    border-radius: 10px;
    outline: none;
    border: none;
    transition: .3s;
    cursor: pointer;
-   box-shadow:  10px 10px 20px #0000003d;
+   box-shadow:  10px 10px 20px #0000003d, 2px 2px 5px 2px rgba(255,255,255,.8) inset;
 }
 
-.main-buttons > button:hover {
+.main-buttons > a:hover {
     filter: brightness(0.9);
 }
 
-.main-buttons > button:active {
+.main-buttons > a:active {
     transform: translateY(10px);
 }
 
 hr {
     color: #fff!important;
 }
-
 
 @media (max-width: 950px) {
     .nav-list {
@@ -220,29 +269,6 @@ hr {
         max-width: max-content;
     }
 
-    .main-title {
-        font-size: 3rem;
-    }
-
-    .characters {
-        padding: 0;
-    }
-
-    .character-container {
-        transform: scale(.8);
-        margin-bottom: -80px;
-    }
-
-    .character-container:hover {
-        transform: scale(.9);
-    }
-
-    .main {
-        padding: 3rem 1rem;
-    }
-}
-
-@media (max-width: 650px) {
     .main-title {
         transform: translateX(-30px);
         font-size: 2rem;
