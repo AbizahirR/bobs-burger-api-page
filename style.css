@@ -7,10 +7,10 @@
 }
 
 :root {
-    --color-primary: #fed28b;
+    --color-primary: #FFC000;
     --primary-hover: #3C5A7F;
     --color-secondary: #fed28b;
-    --background-color: linear-gradient(to top,rgb(224, 108, 1), rgb(223, 146, 78), rgb(214, 182, 135), rgb(192, 218, 193), rgb(145, 253, 253));
+    --background-color: linear-gradient(to top,rgb(246, 171, 101), rgb(223, 146, 78), rgb(214, 182, 135), rgb(192, 218, 193), rgb(145, 253, 253));
 }
 
 body {
@@ -42,7 +42,7 @@ body {
     font-weight: bolder;
     align-items: center;
     gap: 15px;
-    color: var(--color-primary);
+    color: var(--color-secondary);
 }
 
 .logo-sm {
@@ -66,7 +66,7 @@ body {
 }
 
 .nav-link, .nav-link > a {
-    color: var(--color-primary);
+    color: var(--color-secondary);
     font-weight: bolder;
     height: 100%;
     display: flex;
@@ -88,6 +88,24 @@ body {
 
 .main-title {
     color: var(--primary-hover);
+    text-shadow: 0px 0px 10px #fff, 0px 0px 10px #fff, 0px 0px 10px #fff;
+    font-weight: bolder;
+    font-size: 4rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-title--yellow {
+    color: var(--color-primary);
+    transform: translateX(100px);
+}
+
+.counter {
+    font-weight: bolder;
+    color: var(--primary-hover);
+    position: absolute;
+    top: 0;
+    left: 100px;
 }
 
 .characters {
@@ -97,6 +115,7 @@ body {
     justify-content: center;
     margin-top: 3rem;
     padding: 3rem 2rem;
+    position: relative;
 }
 
 .character-container {
@@ -202,8 +221,7 @@ hr {
     }
 
     .main-title {
-        font-size: 2rem;
-        text-align: center;
+        font-size: 3rem;
     }
 
     .characters {
@@ -221,5 +239,17 @@ hr {
 
     .main {
         padding: 3rem 1rem;
+    }
+}
+
+@media (max-width: 650px) {
+    .main-title {
+        transform: translateX(-30px);
+        font-size: 2rem;
+    }
+
+    .counter {
+        font-size: 1.2rem;
+        left: 20px;
     }
 }

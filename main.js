@@ -1,6 +1,7 @@
 import { getData } from "./services/getData.js";
 
-const main = document.querySelector(".characters");
+const main = document.querySelector(".characters-counter");
+const charactersContainer = document.querySelector(".characters");
 const prev = document.getElementById("prev");
 const next = document.getElementById("next");
 
@@ -10,14 +11,14 @@ let charsPerPage = 12;
 
 prev.addEventListener("click", () => {
     if (skipCounter >= charsPerPage) {
-        main.innerHTML = "";
+        // charactersContainer.innerHTML = "";
         skipCounter -= charsPerPage;
         getData(skipCounter, charsPerPage).then(characters => fillCharacters(characters));
     }
 });
 
 next.addEventListener("click", () => {
-    main.innerHTML = "";
+    // charactersContainer.innerHTML = "";
     skipCounter += charsPerPage;
     getData(skipCounter, charsPerPage).then(characters => fillCharacters(characters));
 });
@@ -28,9 +29,11 @@ getData(skipCounter, charsPerPage).then(data => {
 })
 
 const fillCharacters = (characters) => {
+    
+    // main.innerHTML = `<p>Showing ${skipCounter+charsPerPage} of 500 characters</p>`
+    charactersContainer.innerHTML = `<p class="counter">Showing ${skipCounter+charsPerPage} of 506 characters</p>`
 
     characters.forEach((character) => {
-
         let element = document.createElement("a");
         element.setAttribute("href", `${character.wikiUrl}`);
         element.setAttribute("target", "_blank");
@@ -45,6 +48,6 @@ const fillCharacters = (characters) => {
             <p class="character-occupation"><b>Occupation:</b> ${character.occupation || "unknown"}</p>
             `
 
-        main.appendChild(element);
+        charactersContainer.appendChild(element);
     })
 }
