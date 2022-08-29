@@ -41,7 +41,7 @@ const fillCharacters = (characters) => {
         const gender = character.gender.toLowerCase();
 
         element.innerHTML = `
-            <img class="character-img" src="${character.image}" alt="${character.name}">
+            <img class="character-img" loading="lazy" src="${character.image}" alt="${character.name}">
             <h2 class="character-name">
                 <div class="gender" style='background-image: url("../images/${gender}.svg");'></div>
                 ${character.name || "unknown"}

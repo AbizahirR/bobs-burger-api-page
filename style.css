@@ -11,10 +11,10 @@
 }
 
 :root {
-    --color-primary: #ff9d00;
-    --primary-hover: #3C5A7F;
-    --color-secondary: #fff;
-    --background-color: linear-gradient(to top,rgb(246, 171, 101), rgb(223, 146, 78), rgb(214, 182, 135), rgb(192, 218, 193), rgb(145, 253, 253)) 50%;
+    --color-primary: #86aadd;
+    --primary-hover: #7a87db;
+    --color-secondary: rgb(19, 19, 19);
+    --background-color: linear-gradient(to right,#0F2027, #203A43, #2C5364);
 }
 
 body {
@@ -202,7 +202,7 @@ body {
 
 .character-occupation {
     font-size: 1rem;
-    color: #eee;
+    color: rgb(54, 53, 53);
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -221,7 +221,8 @@ body {
 .main-buttons > a {
    font-size: 1.2rem;
    text-transform: uppercase;
-   color: var(--color-primary);
+   color: rgb(54, 53, 53);
+   font-weight: bolder;
    padding: 10px 25px;
    background-color: var(--primary-hover);
    border-radius: 10px;
